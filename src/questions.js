@@ -23,15 +23,61 @@ Add a little style and color to your app
  */
 
 class Questions extends Component {
-  state = {};
+  state = {
+    id: '',
+    answer: '',
+    question: '',
+    category: '',
+    value: '',
+  };
 
   getRandomQuestion = () => {
     fetch('http://jservice.io/api/random')
       .then((res) => res.json())
       .then((data) => {
-        console.log(data[0].question);
+        console.log(data[0]);
+        let q = data[0].id;
+        // get answer
+        if (q) {
+          this.setState({
+            id: data[0].id,
+            question: data[0].question,
+          });
+        }
+        // get question, category and points.
+        if (q) {
+          this.setState({
+            id: data[0].id,
+
+            value: data[0].value,
+          });
+        }
+        if (q) {
+          this.setState({
+            id: data[0].id,
+
+            category: data[0].category,
+          });
+        }
       });
   };
+  answer = () => {
+    fetch('http://jservice.io/api/random')
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data.answer);
+        if (data[0].id) {
+          this.setState({
+            id: data[0].id,
+
+            answer: data[0].answer,
+          });
+        }
+      });
+  };
+  componentDidMount() {
+    console.log('Component Mounted');
+  }
 
   render() {
     return (
@@ -39,6 +85,11 @@ class Questions extends Component {
         {/* Make a button labeled "Random Trivia Question" or "Get Question" or something descriptive. */}
         {/* On click, have this button that will make a GET request (using fetch) to get random trivia data. Let's start you off with a win by giving you the URL: http://jservice.io/api/random */}
         <button onClick={this.getRandomQuestion}> Get Question</button>
+        <h3>Question: {this.state.question} </h3>
+        <h3>Category: {this.state.category.title} </h3>
+        <h3>Points: {this.state.value} </h3>
+        <button onClick={this.answer}>Get Answer</button>
+        <h3>Answer: {this.state.answer} </h3>
       </div>
     );
   }

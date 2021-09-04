@@ -33,7 +33,7 @@ class Questions extends Component {
     value: '',
     score: 0,
   };
-
+  // Let's start you off with a win by giving you the URL: http://jservice.io/api/random
   getRandomQuestion = () => {
     fetch('http://jservice.io/api/random')
       .then((res) => res.json())
@@ -60,6 +60,11 @@ class Questions extends Component {
   subtract() {
     this.setState({
       score: this.state.score - this.state.value,
+    });
+  }
+  reset() {
+    this.setState({
+      score: 0,
     });
   }
   // answer = () => {
@@ -96,7 +101,7 @@ class Questions extends Component {
     return (
       <div>
         {/* Make a button labeled "Random Trivia Question" or "Get Question" or something descriptive. */}
-        {/* On click, have this button that will make a GET request (using fetch) to get random trivia data. Let's start you off with a win by giving you the URL: http://jservice.io/api/random */}
+        {/* On click, have this button that will make a GET request (using fetch) to get random trivia data.  */}
         <button onClick={this.getRandomQuestion}> Get Question</button>
         <h3>Question: {this.state.question} </h3>
         <h3>Category: {this.state.category.title} </h3>
@@ -105,6 +110,7 @@ class Questions extends Component {
           <h2>Your Points: {this.state.score}</h2>
           <button onClick={() => this.add()}>Add To Score</button>
           <button onClick={() => this.subtract()}>Subtract From Score</button>
+          <button onClick={() => this.reset()}>Reset</button>
         </h2>
         {/* <button onClick={this.answer}>Get Answer</button>
         <h3>Answer: {this.state.answer} </h3> */}

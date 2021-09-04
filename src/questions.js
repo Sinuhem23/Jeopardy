@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import './question.css';
 
 /*
 
@@ -26,9 +27,11 @@ class Questions extends Component {
   state = {
     id: '',
     answer: '',
+    toggle: true,
     question: '',
     category: '',
     value: '',
+    score: 0,
   };
 
   getRandomQuestion = () => {
@@ -37,46 +40,56 @@ class Questions extends Component {
       .then((data) => {
         console.log(data[0]);
         let q = data[0].id;
-        // get answer
+        // get question, category, answer and points.
         if (q) {
           this.setState({
-            id: data[0].id,
             question: data[0].question,
-          });
-        }
-        // get question, category and points.
-        if (q) {
-          this.setState({
-            id: data[0].id,
-
             value: data[0].value,
-          });
-        }
-        if (q) {
-          this.setState({
-            id: data[0].id,
-
             category: data[0].category,
-          });
-        }
-      });
-  };
-  answer = () => {
-    fetch('http://jservice.io/api/random')
-      .then((res) => res.json())
-      .then((data) => {
-        console.log(data.answer);
-        if (data[0].id) {
-          this.setState({
-            id: data[0].id,
-
             answer: data[0].answer,
+            toggle: false,
           });
         }
       });
   };
+  add() {
+    this.setState({
+      score: this.state.score + this.state.value,
+    });
+  }
+  subtract() {
+    this.setState({
+      score: this.state.score - this.state.value,
+    });
+  }
+  // answer = () => {
+  //   fetch('http://jservice.io/api/random')
+  //     .then((res) => res.json())
+  //     .then((data) => {
+  //       console.log(data.answer);
+  //       if (data[0].id) {
+  //         this.setState({
+  //           id: data[0].id,
+
+  //           answer: data[0].answer,
+  //         });
+  //       }
+  //     });
+  // };
   componentDidMount() {
     console.log('Component Mounted');
+  }
+  // handleClose() {
+  //   if (this.componentDidMount) {
+
+  //   }
+  // }
+  componentWillUnmount() {
+    console.log('un-mounting');
+  }
+
+  toggleFunction() {
+    console.log('Toggled Answer');
   }
 
   render() {
@@ -87,9 +100,18 @@ class Questions extends Component {
         <button onClick={this.getRandomQuestion}> Get Question</button>
         <h3>Question: {this.state.question} </h3>
         <h3>Category: {this.state.category.title} </h3>
-        <h3>Points: {this.state.value} </h3>
-        <button onClick={this.answer}>Get Answer</button>
-        <h3>Answer: {this.state.answer} </h3>
+        <h3>Value: {this.state.value} </h3>
+        <h2>
+          <h2>Your Points: {this.state.score}</h2>
+          <button onClick={() => this.add()}>Add To Score</button>
+          <button onClick={() => this.subtract()}>Subtract From Score</button>
+        </h2>
+        {/* <button onClick={this.answer}>Get Answer</button>
+        <h3>Answer: {this.state.answer} </h3> */}
+        <details onToggle={this.toggleFunction}>
+          <summary>Answer:</summary>
+          <h3>{this.state.answer} </h3>
+        </details>
       </div>
     );
   }

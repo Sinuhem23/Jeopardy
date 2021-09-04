@@ -99,25 +99,45 @@ class Questions extends Component {
 
   render() {
     return (
-      <div>
+      <div className='main_container'>
         {/* Make a button labeled "Random Trivia Question" or "Get Question" or something descriptive. */}
         {/* On click, have this button that will make a GET request (using fetch) to get random trivia data.  */}
-        <button onClick={this.getRandomQuestion}> Get Question</button>
-        <h3>Question: {this.state.question} </h3>
-        <h3>Category: {this.state.category.title} </h3>
-        <h3>Value: {this.state.value} </h3>
-        <h2>
-          <h2>Your Points: {this.state.score}</h2>
-          <button onClick={() => this.add()}>Add To Score</button>
-          <button onClick={() => this.subtract()}>Subtract From Score</button>
-          <button onClick={() => this.reset()}>Reset</button>
-        </h2>
-        {/* <button onClick={this.answer}>Get Answer</button>
+        <div className='inner_container'>
+          <h1 className='jeopardy_text'>Lets Play Jeopardy!</h1>
+
+          <button className='q_btn' onClick={this.getRandomQuestion}>
+            {' '}
+            Get Question
+          </button>
+          {/* Question */}
+          <h3 className='title_text'>Question: </h3>
+          <h4>{this.state.question}</h4>
+          {/* Category */}
+          <h3 className='title_text'>Category: </h3>
+          <h4> {this.state.category.title}</h4>
+          {/* Value */}
+          <h3 className='title_text'>Value: </h3>
+          <h4> {this.state.value}</h4>
+          <div>
+            {/* Your Points */}
+            <h2 className='title_text'>Your Points: {this.state.score}</h2>
+          </div>
+          <button className='math_btn' onClick={() => this.add()}>
+            Add To Score
+          </button>
+          <button className='math_btn' onClick={() => this.subtract()}>
+            Subtract From Score
+          </button>
+          <button className='math_btn' onClick={() => this.reset()}>
+            Reset
+          </button>
+          {/* <button onClick={this.answer}>Get Answer</button>
         <h3>Answer: {this.state.answer} </h3> */}
-        <details onToggle={this.toggleFunction}>
-          <summary>Answer:</summary>
-          <h3>{this.state.answer} </h3>
-        </details>
+          <details onToggle={this.toggleFunction}>
+            <summary className='answer_text'>Answer:</summary>
+            <h3>{this.state.answer} </h3>
+          </details>
+        </div>
       </div>
     );
   }

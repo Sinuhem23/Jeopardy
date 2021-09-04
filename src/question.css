@@ -1,0 +1,43 @@
+.main_container {
+  background-image: url('./Image/Jeopardy_bg.jpeg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  min-height: 55rem;
+  color: white;
+  font-weight: bold;
+}
+.inner_container {
+  background-color: rgb(120, 186, 212);
+  border-radius: 5rem;
+  position: absolute;
+  top: 3rem;
+  left: 15rem;
+  right: 15rem;
+  opacity: 0.8;
+  padding: 1rem;
+}
+button {
+  color: white;
+  background-color: rgb(109, 37, 192);
+  padding: 15px;
+  border-radius: 1rem;
+  font-weight: bold;
+}
+.jeopardy_text {
+  color: white;
+  text-shadow: 3px 3px 3px rgb(109, 37, 192);
+}
+.q_btn {
+  margin-top: 1rem;
+}
+.title_text {
+  color: rgb(109, 37, 192);
+}
+.math_btn {
+  margin: 1rem 1rem 2rem 0.5rem;
+}
+.answer_text {
+  color: rgb(109, 37, 192);
+  font-weight: bold;
+  padding: 1rem;
+}

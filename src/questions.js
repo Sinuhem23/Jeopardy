@@ -66,6 +66,7 @@ class Questions extends Component {
     this.setState({
       score: 0,
     });
+    window.location.reload();
   }
   // answer = () => {
   //   fetch('http://jservice.io/api/random')
@@ -111,32 +112,36 @@ class Questions extends Component {
           </button>
           {/* Question */}
           <h3 className='title_text'>Question: </h3>
-          <h4>{this.state.question}</h4>
+          <h3>{this.state.question}</h3>
           {/* Category */}
           <h3 className='title_text'>Category: </h3>
-          <h4> {this.state.category.title}</h4>
+          <h3> {this.state.category.title}</h3>
           {/* Value */}
           <h3 className='title_text'>Value: </h3>
-          <h4> {this.state.value}</h4>
+          <h3> {this.state.value}</h3>
           <div>
             {/* Your Points */}
             <h2 className='title_text'>Your Points: {this.state.score}</h2>
           </div>
-          <button className='math_btn' onClick={() => this.add()}>
-            Add To Score
-          </button>
-          <button className='math_btn' onClick={() => this.subtract()}>
-            Subtract From Score
-          </button>
-          <button className='math_btn' onClick={() => this.reset()}>
-            Reset
-          </button>
+          <div className='math_btn'>
+            <button className='add_btn' onClick={() => this.add()}>
+              Add To Score
+            </button>
+            <button className='subtract_btn' onClick={() => this.subtract()}>
+              Subtract From Score
+            </button>
+            <button className='reset_btn' onClick={() => this.reset()}>
+              Reset Points
+            </button>
+          </div>
           {/* <button onClick={this.answer}>Get Answer</button>
         <h3>Answer: {this.state.answer} </h3> */}
-          <details onToggle={this.toggleFunction}>
-            <summary className='answer_text'>Answer:</summary>
-            <h3>{this.state.answer} </h3>
-          </details>
+          <div className='answer_container'>
+            <details onToggle={this.toggleFunction}>
+              <summary className='answer_text'>Answer:</summary>
+              <h3>{this.state.answer} </h3>
+            </details>
+          </div>
         </div>
       </div>
     );

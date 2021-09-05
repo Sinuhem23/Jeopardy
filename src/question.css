@@ -2,9 +2,10 @@
   background-image: url('./Image/Jeopardy_bg.jpeg');
   background-repeat: no-repeat;
   background-size: cover;
-  min-height: 55rem;
+  min-height: 60rem;
   color: white;
   font-weight: bold;
+  display: grid;
 }
 .inner_container {
   background-color: rgb(120, 186, 212);
@@ -18,10 +19,10 @@
 }
 button {
   color: white;
-  background-color: rgb(109, 37, 192);
   padding: 15px;
   border-radius: 1rem;
   font-weight: bold;
+  cursor: pointer;
 }
 .jeopardy_text {
   color: white;
@@ -29,15 +30,80 @@ button {
 }
 .q_btn {
   margin-top: 1rem;
+  width: 12rem;
+  padding: 1rem;
+  background-color: rgb(157, 90, 233);
+
+  /* background-color: rgb(109, 37, 192); */
+}
+.q_btn:hover {
+  background-color: rgb(109, 37, 192);
 }
 .title_text {
   color: rgb(109, 37, 192);
 }
-.math_btn {
-  margin: 1rem 1rem 2rem 0.5rem;
+.add_btn {
+  margin: 1rem 1rem 2rem -1rem;
+  background-color: rgb(88, 209, 240);
 }
+.add_btn:hover {
+  /* background-color: rgb(88, 209, 240); */
+  background-color: rgb(37, 161, 192);
+}
+.subtract_btn {
+  margin: 1rem 1rem 2rem 0;
+  /* background-color: rgb(165, 43, 39); */
+  background-color: rgb(255, 44, 107);
+}
+.subtract_btn:hover {
+  background-color: rgb(184, 30, 76);
+}
+.reset_btn {
+  margin: 1rem 1rem 2rem 0;
+  background-color: rgb(255, 44, 44);
+}
+.reset_btn:hover {
+  background-color: rgb(165, 43, 39);
+}
+
 .answer_text {
-  color: rgb(109, 37, 192);
+  color: white;
+  border: 1px solid black;
+  /* background-color: rgb(109, 37, 192); */
+  background-color: rgb(157, 90, 233);
+
+  border-radius: 1rem;
+  justify-items: center;
+  width: 12rem;
   font-weight: bold;
   padding: 1rem;
+  cursor: pointer;
+}
+.answer_text:hover {
+  background-color: rgb(109, 37, 192);
+
+  /* background-color: rgb(157, 90, 233); */
+}
+.answer_container {
+  display: grid;
+  justify-content: center;
+}
+
+@media (max-width: 650px) {
+  .inner_container {
+    position: inherit;
+    opacity: 0.95;
+    border-radius: 0;
+  }
+  .math_btn {
+    display: grid;
+    justify-content: center;
+    padding-left: 1rem;
+  }
+  .add_btn {
+    margin: 1rem 1rem 2rem 0;
+  }
+  .jeopardy_text {
+    margin-top: 3rem;
+  }
 }

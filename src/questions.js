@@ -27,7 +27,7 @@ class Questions extends Component {
   state = {
     id: '',
     answer: '',
-    toggle: true,
+    toggle: false,
     question: '',
     category: '',
     value: '',
@@ -38,16 +38,15 @@ class Questions extends Component {
     fetch('http://jservice.io/api/random')
       .then((res) => res.json())
       .then((data) => {
-        console.log(data[0]);
-        let q = data[0].id;
+        let q = data[0];
+        console.log(q);
         // get question, category, answer and points.
         if (q) {
           this.setState({
-            question: data[0].question,
-            value: data[0].value,
-            category: data[0].category,
-            answer: data[0].answer,
-            toggle: false,
+            question: q.question,
+            value: q.value,
+            category: q.category,
+            answer: q.answer,
           });
         }
       });
@@ -94,7 +93,9 @@ class Questions extends Component {
     console.log('un-mounting');
   }
 
-  toggleFunction() {
+  toggleFunction(answer) {
+    if (this.state.toggle) {
+    }
     console.log('Toggled Answer');
   }
 
@@ -137,7 +138,7 @@ class Questions extends Component {
           {/* <button onClick={this.answer}>Get Answer</button>
         <h3>Answer: {this.state.answer} </h3> */}
           <div className='answer_container'>
-            <details onToggle={this.toggleFunction}>
+            <details open={() => this.state.toggle}>
               <summary className='answer_text'>Answer:</summary>
               <h3>{this.state.answer} </h3>
             </details>

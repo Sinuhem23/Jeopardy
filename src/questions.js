@@ -35,7 +35,7 @@ class Questions extends Component {
   };
   // Let's start you off with a win by giving you the URL: http://jservice.io/api/random
   getRandomQuestion = () => {
-    fetch('http://jservice.io/api/random')
+    fetch('https://jservice.io/api/random')
       .then((res) => res.json())
       .then((data) => {
         let q = data[0];
